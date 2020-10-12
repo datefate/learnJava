@@ -31,30 +31,7 @@ public class Selection extends Example{
         }
 
     }
-    //    交换i、j 元素位置
-//    private static void exch(int[] nums ,int i,int j){
-//        int t = nums[i];
-//        nums[i] = nums[j];
-//        nums[j] = t;
-//    }
-//
-//    //    i<j
-//    private static boolean less(int i,int j){
-//        return i<j;
-//    }
-//    private static void show(int[] nums){
-//        for(int a : nums){
-//            System.out.println(a);
-//        }
-//    }
-//
-//    public static boolean isSorted(int[] nums){
-//        for(int i = 0;i<nums.length;i++){
-//            if(less(nums[i+1],nums[i]))return false;
-//        }
-//        return true;
-//    }
-//
+
     public static void main(String[] args) {
         int[] numbers = {3,1,4,8,10,18,9,2};
         Selection.sort(numbers);
