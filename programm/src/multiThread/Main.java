@@ -53,7 +53,7 @@ class HelloThread extends Thread{
     /*
     多线程共享变量
      */
-
+/*
 public class Main {
     public static void main(String[] args) throws Exception {
         var add = new AddThread();
@@ -81,13 +81,13 @@ class DecThread extends Thread {
         for (int i=0; i<10000; i++) { Counter.count -= 1; }
     }
 }
-*/
 
+*/
 /*
     对同一对象加不同的锁实现对不同变量的操作
  */
 
-    /*
+    
 public class Main {
     public static void main(String[] args) throws Exception {
 
