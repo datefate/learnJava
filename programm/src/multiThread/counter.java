@@ -1,13 +1,18 @@
 package multiThread;
 
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
 /**
  * @author datefate
  * @site create 2021-03-21-下午2:04
  */
 public class counter{
 
-//    synchronized  锁
+//    ReentrantLock  锁
     private  int count;
+    private final Lock lock = new ReentrantLock();
+
 
     public counter(){
         this.count=0;
@@ -17,14 +22,20 @@ public class counter{
     }
 
     public void add(){
-        synchronized (this){
-            count ++;
+    lock.lock();
+        try {
+            count++;
+        } finally {
+            lock.unlock();
         }
     }
 
     public void de( ){
-        synchronized (this){
+        lock.lock();
+        try {
             count--;
+        } finally {
+            lock.unlock();
         }
     }
 
