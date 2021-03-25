@@ -39,7 +39,7 @@ public class counter{
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         counter c1 = new counter();
 
         Thread th1 = new Thread(()->{
@@ -71,7 +71,14 @@ public class counter{
 
         });
 
+
         th2.start();
+
+        th1.join();
+        th2.join();
+
+        System.out.println("main 获取到的数 "+c1.count);
+
 
     }
 

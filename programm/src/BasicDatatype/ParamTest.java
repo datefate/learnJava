@@ -3,6 +3,13 @@ package BasicDatatype;
 /**
  * I hate java
  * 注意：Java对所有变量的处理和C、C++ 有些不同
+ *  * java core v1
+ *  * java call by value
+ *  *
+ *  * java 对象并不是采用引用调用，对象引用是按值传递的
+ *  *
+ *  *
+ *
  * @author datefate
  * @site create 2020-09-下午6:15
  */
@@ -20,7 +27,7 @@ public class ParamTest {
         tripleSalary(harry);
         System.out.println("After: salary = " + harry.getSalary());
 
-        System.out.println("Testing object parameters");
+        System.out.println("\nTesting object parameters");
         Employee2 a = new Employee2("Asura",1000000);
         Employee2 b = new Employee2("Datefate",250);
         System.out.println("Before: a = " + a.getName()+ "，salary = "+a.getSalary());

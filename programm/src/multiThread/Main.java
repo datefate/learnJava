@@ -1,5 +1,7 @@
 package multiThread;
 
+import java.util.concurrent.CompletableFuture;
+
 /**
  * @author datefate
  * @site create 2021-03-11-上午10:35
@@ -86,8 +88,8 @@ class DecThread extends Thread {
 /*
     对同一对象加不同的锁实现对不同变量的操作
  */
+/*
 
-    
 public class Main {
     public static void main(String[] args) throws Exception {
 
@@ -152,26 +154,146 @@ class DecTeacherThread extends Thread {
         }
     }
 }
+*/
+/*
+
+public class Main{
+    public static void main(String[] args) {
+        Thread p = new people();
+        Thread p2 = new people();
+        int x=0,y=1;
+        p.start();
+        p2.start();
+
+    }
+
+}
+
+
+class people extends Thread{
+    private static int studentNum=0;
+    private static int techerNum=0;
+
+    public synchronized void addS(){
+        this.studentNum++;
+
+    }
+    public synchronized void des(){
+        this.studentNum--;
+    }
+
+    public void run(int flag){
+        if (flag == 0) {
+            for (int i=0; i<10000; i++) {
+                addS();
+            }
+        }else {
+            for (int i=0; i<10000; i++) {
+                des();
+            }
+        }
+    }
+
+
+    public void getStu(){
+        System.out.println(this.studentNum);
+
+
+    }
+}
+*/
+//
+//class TaskQueue{
+//    private final Lock lock =new ReentrantLock();
+//    private final Condition condition =lock.newCondition();
+//    private Queue<String> queue = new LinkedList<>();
+//
+//
+//}
+//
+//class Main{
+//
+//}
+
+
 //public class Main{
-//    public static void main(String[] args) {
+//    public static void main(String[] args) throws InterruptedException {
+//        var q = new TaskQueue();
+//        var ts   = new ArrayList<Thread>();
+//        for (int i = 0; i < 5; i++) {
+//            var t = new Thread(){
+//                public  void  run(){
+//                    while (true){
+//                        try{
+//                            String s =q.getTask();
+//                            System.out.println("execute task :"+ s);
+//                        } catch (InterruptedException e) {
+//                            return;
+//                        }
+//                    }
+//                }
+//            };
+//            t.start();
+//            ts.add(t);
+//        }
+//        var add = new Thread(() ->{
+//            String s = "t-" + Math.random();
+//            System.out.println("add task :"+s);
+//            q.addTask(s);
+//            try {
+//                Thread.sleep(100);
+//            } catch (InterruptedException e) {
 //
+//            }
+//        });
+//        add.start();
+//        add.join();
+//        Thread.sleep(100);
+//        for (var t :ts){
+//            t.interrupt();
+//        }
 //    }
+//
 //}
 //
-//class people extends Thread{
-//    private static int studentNum=0;
-//    private static int techerNum=0;
-//
-//    public synchronized void addS(){
-//        this.studentNum++;
-//
-//    }
-//    public synchronized void des(){
-//        this.studentNum--;
+//class TaskQueue{
+//    Queue<String> queue =new LinkedList<>();
+//    public synchronized void addTask(String s){
+//        this.queue.add(s);
+//        this.notifyAll();
 //    }
 //
-//    public void get(){
-//
-//
+//    public synchronized String getTask() throws InterruptedException{
+//        while (queue.isEmpty()){
+//            this.wait();
+//        }
+//        return queue.remove();
 //    }
 //}
+
+
+public class Main{
+    static Double fetchPrice(){
+        try{
+            Thread.sleep(100);
+
+        } catch (InterruptedException e) {
+        }
+        if (Math.random() < 0.3) {
+            throw new RuntimeException("fetch price failed");
+        }
+        return 5+Math.random()*20;
+    }
+
+    public static void main(String[] args) throws InterruptedException {
+        CompletableFuture<Double> cf  = CompletableFuture.supplyAsync(Main::fetchPrice);
+        cf.thenAccept((result)->{
+            System.out.println("price:"+ result);
+        });
+        cf.exceptionally((e)->{
+            System.out.println("wwwww");
+            return null;
+        });
+        Thread.sleep(200);
+    }
+}

@@ -6,26 +6,16 @@ package BasicDatatype;
  */
 public class StaticAndfinal {
     private final String name = "Asura";
-    private static int id = 0;
-    private int idS ;
+    private static int id;
 
-    public String getName() {
-        return name;
+    private static int nextid = 0;
+
+
+    public void setId(int id) {
+        StaticAndfinal.id = id;
+
+//        静态变量
+        this.nextid++;
     }
-
-    public static int getId() {
-        return id;
-    }
-
-    public int getIdS() {
-        return idS;
-    }
-
-    StaticAndfinal(int idS){
-        id++;
-        this.idS = idS;
-
-    }
-
 }
 
