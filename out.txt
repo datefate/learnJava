@@ -1,5 +1,0 @@
-
-/dev/sdb4       187G  5.7G  172G   4% /
-/dev/sdb5        94G  7.7G   81G   9% /usr
-/dev/sdb6       448G  254G  194G  57% /winDiskD/D
-/dev/sdb2       187G  8.8G  169G   5% /home
